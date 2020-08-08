@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikeDislikePertanyaanTabel extends Migration
+class CreateLikeDislikeJawabanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLikeDislikePertanyaanTabel extends Migration
      */
     public function up()
     {
-        Schema::create('like_dislike_pertanyaan_tabel', function (Blueprint $table) {
+        Schema::create('like_dislike_jawaban', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('profile_id');
             $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->unsignedBigInteger('pertanyaan_id');
-            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan');
+            $table->unsignedBigInteger('jawaban_id');
+            $table->foreign('jawaban_id')->references('id')->on('jawaban');
             $table->integer('poin');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateLikeDislikePertanyaanTabel extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('like_dislike_pertanyaan_tabel');
+        Schema::dropIfExists('like_dislike_jawaban');
     }
 }
